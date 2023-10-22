@@ -1,30 +1,32 @@
-'use client';
-import React from 'react';
-import { Formik, Form, Field, ErrorMessage } from 'formik';
-import * as Yup from 'yup';
-import { ToastContainer, errorToast, successToast } from '../toast';
+"use client"
+
+import React from "react"
+import { ErrorMessage, Field, Form, Formik } from "formik"
+import * as Yup from "yup"
+
+import { ToastContainer, errorToast, successToast } from "../toast"
 
 interface ContactFormValues {
-  clientName: string;
-  email: string;
-  phone: string;
-  message: string;
+  clientName: string
+  email: string
+  phone: string
+  message: string
 }
 
 const ContactForm: React.FC = () => {
   const initialValues: ContactFormValues = {
-    clientName: '',
-    email: '',
-    phone: '',
-    message: '',
-  };
+    clientName: "",
+    email: "",
+    phone: "",
+    message: "",
+  }
 
   const validationSchema: Yup.Schema<ContactFormValues> = Yup.object().shape({
-    clientName: Yup.string().required('Required'),
-    email: Yup.string().email('Invalid email').required('Required'),
-    phone: Yup.string().required('Required'),
-    message: Yup.string().required('Required'),
-  });
+    clientName: Yup.string().required("Required"),
+    email: Yup.string().email("Invalid email").required("Required"),
+    phone: Yup.string().required("Required"),
+    message: Yup.string().required("Required"),
+  })
 
   const handleSubmit = async (
     values: ContactFormValues,
@@ -37,22 +39,22 @@ const ContactForm: React.FC = () => {
     // Handle form submission logic here
     // console.log(values);
     try {
-      let res = await fetch('/api/contact/form', {
-        method: 'POST',
+      let res = await fetch("/api/contact/form", {
+        method: "POST",
         body: JSON.stringify(values),
-      });
+      })
 
-      let data: any = await res.json();
+      let data: any = await res.json()
       // alert("Form submitted successfully")
-      successToast('Form successfully submitted');
-      resetForm();
-      console.log({ data });
+      successToast("Form successfully submitted")
+      resetForm()
+      console.log({ data })
     } catch (error) {
-      errorToast('Something went wrong, check your data and try again');
+      errorToast("Something went wrong, check your data and try again")
     }
 
-    setSubmitting(false);
-  };
+    setSubmitting(false)
+  }
 
   return (
     <Formik<ContactFormValues>
@@ -113,7 +115,7 @@ const ContactForm: React.FC = () => {
         <div>
           <button
             type="submit"
-            className="bg-primary border-primary w-full rounded border p-3 text-white bg-[#0d0452] hover:bg-skin-accent transition hover:bg-opacity-90"
+            className=" border-primary w-full rounded border p-3 text-white bg-[#0d0452] hover:bg-skin-accent transition hover:bg-opacity/90"
           >
             Send Message
           </button>
@@ -121,7 +123,7 @@ const ContactForm: React.FC = () => {
         <ToastContainer></ToastContainer>
       </Form>
     </Formik>
-  );
-};
+  )
+}
 
-export default ContactForm;
+export default ContactForm
