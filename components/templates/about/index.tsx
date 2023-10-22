@@ -9,8 +9,10 @@ interface AboutSectionProps {
   imageUrl: string;
 }
 
-const AboutSection: React.FC<AboutSectionProps> = ({ imageUrl }) => {
+// const AboutSection: React.FC<AboutSectionProps> = ({ imageUrl }) => {
+  function AboutSection ({imageUrl}:AboutSectionProps){
   return (
+    <>
     <SectionWrapper sectionId="about" className="max-w-[1000px]">
       <SectionTitle className="text-center text-4xl p-2 md:p-10 ">
         About us
@@ -40,6 +42,7 @@ const AboutSection: React.FC<AboutSectionProps> = ({ imageUrl }) => {
       </div>
       <p className="mb-20"></p>
     </SectionWrapper>
+    </>
   );
 };
 
