@@ -1,0 +1,1 @@
+npx shadcn-ui@latest add button alert alertdialog avatar badge button calendar card checkbox datatable datepicker dialog dropdownmenu form hovercard input label menubar navigationmenu popover scrollarea select seperator sheet skeleton slider switch table textarea toast toggle tooltip 
